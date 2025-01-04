@@ -11,6 +11,7 @@ export default function ContactUs() {
 
     const handleSubmit = () => {
         setUser({ name, email, message });
+        console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
     }
 
     return (
