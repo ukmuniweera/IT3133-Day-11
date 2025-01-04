@@ -3,15 +3,21 @@ import { StyleSheet, View } from 'react-native';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
+import { PaperProvider } from 'react-native-paper';
+import { SafeAreaView, ScrollView } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Home />
-      <AboutUs />
-      <ContactUs />
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider>
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
+          <Home />
+          <AboutUs />
+          <ContactUs />
+          <StatusBar style="auto" />
+        </ScrollView>
+      </SafeAreaView>
+    </PaperProvider>
   );
 }
 
