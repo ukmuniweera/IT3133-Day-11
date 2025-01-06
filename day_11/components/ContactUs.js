@@ -105,6 +105,6 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     marginHorizontal: 5,
-    width: 200,
+    width: 150,
   },
 });
