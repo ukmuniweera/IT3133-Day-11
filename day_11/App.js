@@ -19,7 +19,6 @@ export default function App() {
         <Stack.Screen name="ContactUs" component={ContactUs} options={{ title: 'Contact ' }} />
       </Stack.Navigator>
     </NavigationContainer>
-    
   );
 }
 

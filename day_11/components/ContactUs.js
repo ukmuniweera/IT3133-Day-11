@@ -14,6 +14,7 @@ export default function ContactUs() {
   const handleSubmit = () => {
     setUser({ name, email, message });
     console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+    alert(`Name: ${name}, Email: ${email}, Message: ${message}`);
   };
 
   return (
@@ -104,6 +105,6 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     marginHorizontal: 5,
-    width: 150,
+    width: 200,
   },
 });
