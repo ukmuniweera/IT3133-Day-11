@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import { PaperProvider, Text, TextInput, Button, Appbar } from 'react-native-paper';
+import { PaperProvider, Text, TextInput, Button, Card } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ContactUs() {
+  const navigation = useNavigation();
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [message, setMessage] = React.useState('');
@@ -16,49 +18,54 @@ export default function ContactUs() {
 
   return (
     <PaperProvider>
-      <Appbar.Header>
-        <Appbar.Content title="Contact Us" />
-      </Appbar.Header>
+      <Card>
+        <View style={styles.container}>
+          <Text style={styles.title}>Feel free to contact us!</Text>
 
-      <View style={styles.container}>
-        <Text style={styles.title}>Feel free to contact us!</Text>
-        
-        <TextInput
-          style={styles.input}
-          label="Name"
-          mode="outlined"
-          value={name}
-          onChangeText={setName}
-        />
-        
-        <TextInput
-          style={styles.input}
-          label="Email"
-          mode="outlined"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-        
-        <TextInput
-          style={[styles.input, styles.messageInput]}
-          label="Message"
-          mode="outlined"
-          multiline
-          numberOfLines={5}
-          value={message}
-          onChangeText={setMessage}
-        />
+          <TextInput
+            style={styles.input}
+            label="Name"
+            mode="outlined"
+            value={name}
+            onChangeText={(text) => setName(text)}
+          />
 
-        <Button
-          mode="contained"
-          onPress={handleSubmit}
-          style={styles.button}
-        >
-          Send
-        </Button>
-      </View>
+          <TextInput
+            style={styles.input}
+            label="Email"
+            mode="outlined"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            keyboardType="email-address"
+          />
 
+          <TextInput
+            style={[styles.input, styles.messageInput]}
+            label="Message"
+            mode="outlined"
+            multiline
+            numberOfLines={5}
+            value={message}
+            onChangeText={(text) => setMessage(text)}
+          />
+
+          <Button
+            mode="contained"
+            onPress={handleSubmit}
+            style={styles.button}
+          >
+            Send
+          </Button>
+          <View style={styles.buttonContainer}>
+            <Button mode="contained" onPress={() => navigation.navigate("Home")} style={styles.button}>
+              Home
+            </Button>
+            <Button mode="contained" onPress={() => navigation.navigate("AboutUs")} style={styles.button}>
+              About Us
+            </Button>
+          </View>
+        </View>
+      </Card>
       <StatusBar style="auto" />
     </PaperProvider>
   );
@@ -88,5 +95,15 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  button: {
+    flex: 1,
+    marginHorizontal: 5,
+    width: 150,
   },
 });
